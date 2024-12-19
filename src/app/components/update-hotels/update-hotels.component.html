@@ -1,0 +1,147 @@
+<h1>Update Hotel Details</h1>
+<form class="container col-md-4" #formData="ngForm" (ngSubmit)="updateHotel(formData.value)">
+    <!-- Hotel ID -->
+    <div class="form-group">
+      <label for="hotelId">Enter HOTELID:</label>
+      <input
+        type="number"
+        id="hotelId"
+        class="form-control"
+        name="hotelId"
+        ngModel
+        #hotelId="ngModel"
+        required
+        min="1"
+      />
+      <div *ngIf="hotelId.invalid && hotelId.touched" class="text-danger">
+        Hotel ID is required and must be greater than 0.
+      </div>
+    </div>
+  
+    <!-- Hotel Name -->
+    <div class="form-group">
+      <label for="hotelName">Enter HOTELNAME:</label>
+      <input
+        type="text"
+        id="hotelName"
+        class="form-control"
+        name="hotelName"
+        ngModel
+        #hotelName="ngModel"
+        required
+        minlength="3"
+      />
+      <div *ngIf="hotelName.invalid && hotelName.touched" class="text-danger">
+        Hotel Name is required and must be at least 3 characters long.
+      </div>
+    </div>
+  
+    <!-- Address -->
+    <div class="form-group">
+      <label for="address">Enter ADDRESS:</label>
+      <input
+        type="text"
+        id="address"
+        class="form-control"
+        name="address"
+        ngModel
+        #address="ngModel"
+        required
+      />
+      <div *ngIf="address.invalid && address.touched" class="text-danger">
+        Address is required.
+      </div>
+    </div>
+  
+    <!-- City -->
+    <div class="form-group">
+      <label for="city">Enter CITY:</label>
+      <input
+        type="text"
+        id="city"
+        class="form-control"
+        name="city"
+        ngModel
+        #city="ngModel"
+        required
+      />
+      <div *ngIf="city.invalid && city.touched" class="text-danger">
+        City is required.
+      </div>
+    </div>
+  
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Enter DESCRIPTION:</label>
+      <input
+        type="text"
+        id="description"
+        class="form-control"
+        name="description"
+        ngModel
+        #description="ngModel"
+        required
+      />
+      <div *ngIf="description.invalid && description.touched" class="text-danger">
+        Description is required.
+      </div>
+    </div>
+  
+    <!-- Contact Number -->
+    <div class="form-group">
+      <label for="contactNumber">CONTACT NUMBER:</label>
+      <input
+        type="text"
+        id="contactNumber"
+        class="form-control"
+        name="contactNumber"
+        ngModel
+        #contactNumber="ngModel"
+        required
+        pattern="^[0-9]{10}$"
+      />
+      <div *ngIf="contactNumber.invalid && contactNumber.touched" class="text-danger">
+        Contact number must be a valid 10-digit number.
+      </div>
+    </div>
+  
+    <!-- Rating -->
+    <div class="form-group">
+      <label for="rating">RATING:</label>
+      <input
+        type="number"
+        id="rating"
+        class="form-control"
+        name="rating"
+        ngModel
+        #rating="ngModel"
+        required
+        min="1"
+        max="5"
+      />
+      <div *ngIf="rating.invalid && rating.touched" class="text-danger">
+        Rating is required and must be between 1 and 5.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="userId">Enter USERID:</label>
+      <input
+        type="number"
+        id="userId"
+        class="form-control"
+        name="userId"
+        ngModel
+        #hotelId="ngModel"
+        required
+        min="1"
+      />
+      <div *ngIf="hotelId.invalid && hotelId.touched" class="text-danger">
+        User ID is required and must be greater than 0.
+      </div>
+    </div>
+  
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Update Hotel</button>
+  </form>
+  

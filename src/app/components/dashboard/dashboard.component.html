@@ -1,0 +1,170 @@
+<h1 style="color:goldenrod">HOTEL MANAGEMENT SYSTEM</h1>
+
+<style>
+  .bg-purple {
+    background: mistyrose;
+    background-blend-mode: overlay;
+  }
+
+  h1 {
+    color: goldenrod;
+    text-align: center;
+    margin-top: 1rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2)
+  }
+
+  .navbar .nav-link {
+    color: rgb(74, 178, 192) !important;
+    font-weight: bold;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .navbar .nav-link:hover {
+    color: Navy !important;
+  }
+
+  .dropdown-menu {
+    max-height: 500px;
+    max-width: 500px;
+  }
+
+  .dropdown-item {
+    padding: 10px 80px;
+  }
+
+  .nav-link.dropdown-toggle {
+    font-size: 1rem;
+  }
+</style>
+
+<nav class="navbar navbar-expand-sm bg-purple">
+  <div class="container d-flex justify-content-center">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Users
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" routerLink="/users/add">Add Users</a></li>
+          <li><a class="dropdown-item" routerLink="/users/display">Display Users</a></li>
+          <li><a class="dropdown-item" routerLink="/users/update">Update Users</a></li>
+          <li><a class="dropdown-item" routerLink="/users/updatePhoneNumber">Update Users Phone Number</a></li>
+          <!--<li><a class="dropdown-item" routerLink="/users/updatePassword">Update Password</a></li>-->
+          <li>
+            <form class="d-flex" #idSearchForm="ngForm" (ngSubmit)="findById(idSearchForm)">
+              <input class="form-control me-2" type="search" name="data" ngModel placeholder="Search by Id"
+                aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search by Id</button>
+            </form>
+          </li>
+          <li>
+            <form class="d-flex" #nameSearchForm="ngForm" (ngSubmit)="findByName(nameSearchForm)">
+              <input class="form-control me-2" type="search" name="data" ngModel placeholder="Search by Name"
+                aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Search by Name</button>
+            </form>
+          </li>
+
+        </ul>
+      </li>
+
+
+
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Hotels
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" routerLink="/hotels/add">Add Hotels</a></li>
+          <li><a class="dropdown-item" routerLink="/hotels/display">Display Hotels</a></li>
+          <li><a class="dropdown-item" routerLink="/hotels/update">Update Hotels</a></li>
+          <li>
+            <form class="d-flex" #idHotelsSearchForm="ngForm" (ngSubmit)="findByHotelsId(idHotelsSearchForm)">
+              <input class="form-control me-2" type="search" name="data" ngModel placeholder="Search by Id"
+                aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search by Id</button>
+            </form>
+          </li>
+          <li>
+            <form class="d-flex" #citySearchForm="ngForm" (ngSubmit)="findHotelsByCity(citySearchForm)">
+              <input class="form-control me-2" type="search" name="data" ngModel placeholder="Search by City"
+                aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Search by City</button>
+            </form>
+          </li>
+          <li>
+            <form class="d-flex" #ratingSearchForm="ngForm" (ngSubmit)="findHotelsByRating(ratingSearchForm)">
+              <input class="form-control me-2" type="search" name="data" ngModel placeholder="Search by Rating"
+                aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Search by Rating</button>
+            </form>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Rooms
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" routerLink="/rooms/add">Add Rooms</a></li>
+          <li><a class="dropdown-item" routerLink="/rooms/display">Display Rooms</a></li>
+          <li><a class="dropdown-item" routerLink="/rooms/update">Update Rooms</a></li>
+          <li><a class="dropdown-item" routerLink="/rooms/updateCapacity">Update capacity</a></li>
+          <li><a class="dropdown-item" routerLink="/rooms/updatePricePerNight">Update PricePerNight</a></li>
+          <li>
+            <form class="d-flex" #idRoomsSearchForm="ngForm" (ngSubmit)="findByRoomsId(idRoomsSearchForm)">
+              <input class="form-control me-2" type="search" name="data" ngModel placeholder="Search by Id"
+                aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search by Id</button>
+            </form>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Bookings
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" routerLink="/bookings/add">Add Bookings</a></li>
+          <li><a class="dropdown-item" routerLink="/bookings/display">Display Bookings</a></li>
+          <li><a class="dropdown-item" routerLink="/bookings/update">Update Bookings</a></li>
+          <li><a class="dropdown-item" routerLink="/bookings/updateCapacity">Update capacity</a></li>
+          <li><a class="dropdown-item" routerLink="/bookings/updatePricePerNight">Update PricePerNight</a></li>
+          <li>
+            <form class="d-flex" #idBookingsSearchForm="ngForm" (ngSubmit)="findByBookingsId(idBookingsSearchForm)">
+              <input class="form-control me-2" type="search" name="data" ngModel placeholder="Search by Id"
+                aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search by Id</button>
+            </form>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Login
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" routerLink="/login/login">Login Page</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- <button routerLink="/login" >HR Dashboard</button> -->
+<br>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,33 @@
+<h3>Displaying searched Hotels</h3>
+<div *ngIf="hotelSearchList.length > 0" class="container col-md-8 d-flex justify-content-center">
+  <table class="table table-dark col-sm-5">
+    <thead>
+      <tr>
+        <th>Sl.no</th>
+        <th>HOTELID</th>
+        <th>HOTELNAME</th>
+        <th>ADDRESS</th>
+        <th>CITY</th>
+        <th>DESCRIPTION</th>
+        <th>CONTACTNUMBER</th>
+        <th>RATING</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hotel of hotelSearchList; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ hotel.hotelId }}</td>
+        <td>{{ hotel.hotelName }}</td>
+        <td>{{ hotel.address }}</td>
+        <td>{{ hotel.city }}</td>
+        <td>{{ hotel.description }}</td>
+        <td>{{ hotel.contactNumber }}</td>
+        <td>{{ hotel.rating }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="hotelSearchList.length === 0">
+  <p>No hotels found for "{{ searchInput }}"</p>
+</div>

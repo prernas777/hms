@@ -1,0 +1,11 @@
+<p>display-rooms works!</p>
+<div  *ngIf="roomList.length > 0" class="container col-md-8 d-flex justify-content-center">
+    <table class="table table-dark">
+   
+       <tr>  <th>ROOMID</th><th>ROOMNUMBER</th><th>ROOMTYPE</th><th>PRICEPERNIGHT</th><th>AVAILABILTYSTATUS</th><th>CAPACITY</th><th>DESCRIPTION</th><th>DELETE</th> </tr>
+       <tr *ngFor="let room of roomList"> 
+           <td>{{room.roomId}}</td><td>{{room.roomNumber}}</td><td>{{room.roomType}}</td><td>{{room.pricePerNight}}</td><td>{{room.availabilityStatus}}</td><td>{{room.capacity}}</td><td>{{room.description}}</td>
+           <td><button type="button" class="btn btn-danger"  (click)="deleteById(room.roomId)" >Delete</button></td>
+        </tr>
+    </table>
+  

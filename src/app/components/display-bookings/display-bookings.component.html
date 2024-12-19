@@ -1,0 +1,68 @@
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="bookingOptions">Select Booking Option:</label>
+                <select id="bookingOptions" class="form-control" [(ngModel)]="selectedOption">
+                    <option value="bookingId">Booking ID</option>
+                    <option value="bookingStatus">Booking Status</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+                <label for="search">Search for bookings:</label>
+                <input type="text" class="form-control" placeholder="Search here ..." [(ngModel)]="searchTerm">
+                <small class="form-text text-muted">We have
+                    search functionality with <i><b>ID</b></i> and <i><b>STATUS</b></i> for now.
+                </small>
+            </div>
+        </div>
+        <div class="col-12 text-center">
+            <button class="btn btn-primary" (click)="searchBookings()">Search</button>
+        </div>
+    </div>
+
+    <div class="card-top mt-3">
+        <div *ngIf="filter; else elseFilter">
+            <div class="row">
+                <div class="col-4 mt-1 mb-1" *ngFor="let item of allBookings">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <p><strong>Booking ID:</strong> {{item.bookingId}}</p>
+                            <p><strong>Check-In Date:</strong> {{item.checkInDate}}</p>
+                            <p><strong>Check-Out Date:</strong> {{item.checkOutDate}}</p>
+                            <p><strong>Status:</strong> {{item.bookingStatus}}</p>
+                            <p><strong>Booking Date:</strong> {{item.bookingDate}}</p>
+                            <p><strong>Number of Guests:</strong> {{item.numberOfGuests}}</p>
+                            <p><strong>Special Requests:</strong> {{item.specialRequests}}</p>
+                            <p><strong>User ID:</strong> {{item.userId}}</p>
+                            <p><strong>Hotel ID:</strong> {{item.hotelId}}</p>
+                            <p><strong>Room ID:</strong> {{item.roomId}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-template #elseFilter>
+            <div class="row">
+                <div class="col-4 mt-1 mb-1" *ngFor="let item of filteredBookings">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <p><strong>Booking ID:</strong> {{item.bookingId}}</p>
+                            <p><strong>Check-In Date:</strong> {{item.checkInDate}}</p>
+                            <p><strong>Check-Out Date:</strong> {{item.checkOutDate}}</p>
+                            <p><strong>Status:</strong> {{item.bookingStatus}}</p>
+                            <p><strong>Booking Date:</strong> {{item.bookingDate}}</p>
+                            <p><strong>Number of Guests:</strong> {{item.numberOfGuests}}</p>
+                            <p><strong>Special Requests:</strong> {{item.specialRequests}}</p>
+                            <p><strong>User ID:</strong> {{item.userId}}</p>
+                            <p><strong>Hotel ID:</strong> {{item.hotelId}}</p>
+                            <p><strong>Room ID:</strong> {{item.roomId}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

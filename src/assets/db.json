@@ -1,0 +1,68 @@
+{
+  "rooms": [
+    {
+      "roomId": 1,
+      "roomNumber": 13,
+      "roomType": "SINGLE",
+      "pricePerNight": 1500,
+      "availabilityStatus": "AVAILABLE",
+      "capacity": 1,
+      "description": "Good",
+      "id": "3871"
+    },
+    {
+      "id": "5d00",
+      "roomId": 2,
+      "roomNumber": 14,
+      "pricePerNight": 1500,
+      "capacity": "1",
+      "description": "Good",
+      "roomType": "SINGLE",
+      "availabilityStatus": "BOOKED"
+    }
+  ],
+  "users": [
+    {
+      "userId": 1,
+      "email": "ganga@gmail.com",
+      "name": "Ganga",
+      "phoneNumber": 9090976544,
+      "password": "ganga@2002",
+      "dateCreated": "2024-10-10",
+      "userRole": "ADMIN",
+      "id": "aad2"
+    },
+    {
+      "id": "41ee",
+      "userId": 2,
+      "email": "shobha@gmail.com",
+      "name": "Shobha",
+      "phoneNumber": 8977967609,
+      "password": "shobha@1979",
+      "dateCreated": "2024-12-11",
+      "userRole": "GUEST"
+    }
+  ],
+  "hotels": [
+    {
+      "hotelId": 1,
+      "hotelName": "Grand Hotel",
+      "address": "Bangalore",
+      "city": "Bangalore",
+      "description": "GoodView",
+      "contactNumber": 9876500987,
+      "rating": 4.5,
+      "id": "d762"
+    },
+    {
+      "id": "6a5c",
+      "hotelId": 2,
+      "hotelName": "The Taj",
+      "address": "Bangalore",
+      "city": "Mumbai",
+      "description": "good food",
+      "contactNumber": "8977967609",
+      "rating": 4
+    }
+  ]
+}

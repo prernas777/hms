@@ -1,0 +1,150 @@
+<h1>Update Room Details</h1>
+
+<form class="container col-md-4" #formData="ngForm" (ngSubmit)="updateRoom(formData.value)">
+    <!-- Room ID -->
+    <div class="form-group">
+        <label for="roomId">Enter ROOMID:</label>
+        <input
+            type="number"
+            id="roomId"
+            class="form-control"
+            name="roomId"
+            ngModel
+            #roomId="ngModel"
+            required
+            min="1"
+        />
+        <div *ngIf="roomId.invalid && roomId.touched" class="text-danger">
+            Room ID is required and must be a positive number.
+        </div>
+    </div>
+
+    <!-- Room Number -->
+    <div class="form-group">
+        <label for="roomNumber">Enter ROOMNUMBER:</label>
+        <input
+            type="number"
+            id="roomNumber"
+            class="form-control"
+            name="roomNumber"
+            ngModel
+            #roomNumber="ngModel"
+            required
+            min="1"
+        />
+        <div *ngIf="roomNumber.invalid && roomNumber.touched" class="text-danger">
+            Room Number is required and must be a positive number.
+        </div>
+    </div>
+
+    <!-- Price Per Night -->
+    <div class="form-group">
+        <label for="pricePerNight">Enter PRICEPERNIGHT:</label>
+        <input
+            type="number"
+            id="pricePerNight"
+            class="form-control"
+            name="pricePerNight"
+            ngModel
+            #pricePerNight="ngModel"
+            required
+            min="1"
+        />
+        <div *ngIf="pricePerNight.invalid && pricePerNight.touched" class="text-danger">
+            Price per night is required and must be a positive number.
+        </div>
+    </div>
+
+    <!-- Capacity -->
+    <div class="form-group">
+        <label for="capacity">Enter CAPACITY:</label>
+        <input
+            type="text"
+            id="capacity"
+            class="form-control"
+            name="capacity"
+            ngModel
+            #capacity="ngModel"
+            required
+            pattern="^[1-9][0-9]*$"
+        />
+        <div *ngIf="capacity.invalid && capacity.touched" class="text-danger">
+            Capacity is required and must be a positive integer.
+        </div>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+        <label for="description">Enter DESCRIPTION:</label>
+        <input
+            type="text"
+            id="description"
+            class="form-control"
+            name="description"
+            ngModel
+            #description="ngModel"
+            required
+            minlength="4"
+        />
+        <div *ngIf="description.invalid && description.touched" class="text-danger">
+            Description is required and must be at least 10 characters long.
+        </div>
+    </div>
+
+    <!-- Room Type -->
+    <div class="form-group">
+        <label for="roomType">Select ROOM TYPE:</label>
+        <select
+            id="roomType"
+            class="form-control"
+            name="roomType"
+            ngModel
+            #roomType="ngModel"
+            required
+        >
+            <option [value]="null" disabled selected>Select Room Type</option>
+            <option *ngFor="let type of roomTypes" [value]="type">{{ type }}</option>
+        </select>
+        <div *ngIf="roomType.invalid && roomType.touched" class="text-danger">
+            Room type is required.
+        </div>
+    </div>
+
+    <!-- Availability Status -->
+    <div class="form-group">
+        <label for="availabilityStatus">Select AVAILABILITY STATUS:</label>
+        <select
+            id="availabilityStatus"
+            class="form-control"
+            name="availabilityStatus"
+            ngModel
+            #availabilityStatus="ngModel"
+            required
+        >
+            <option [value]="null" disabled selected>Select Availability Status</option>
+            <option *ngFor="let status of availabilityStatuses" [value]="status">{{ status }}</option>
+        </select>
+        <div *ngIf="availabilityStatus.invalid && availabilityStatus.touched" class="text-danger">
+            Availability status is required.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="hotelId">Enter HOTELID:</label>
+        <input
+            type="number"
+            id="hotelId"
+            class="form-control"
+            name="hotelId"
+            ngModel
+            #roomId="ngModel"
+            required
+            min="1"
+        />
+        <div *ngIf="roomId.invalid && roomId.touched" class="text-danger">
+            Hotel ID is required and must be a positive number.
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Update Room</button>
+</form>

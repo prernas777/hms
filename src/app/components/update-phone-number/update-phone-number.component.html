@@ -1,0 +1,25 @@
+<div class="container mt-4">
+    <div class="row">
+      <!-- User ID Field -->
+      <div class="col-md-6 mb-3">
+        <label for="userId" class="form-label">User ID:</label>
+        <input type="number" id="userId" class="form-control" [(ngModel)]="userId" />
+      </div>
+    
+      <!-- Phone Number Field -->
+      <div class="col-md-6 mb-3">
+        <label for="phoneNumber" class="form-label">Phone Number:</label>
+        <input type="number" id="phoneNumber" class="form-control" [(ngModel)]="phoneNumber" />
+      </div>
+    </div>
+  
+    <div class="row">
+      <!-- Update Button -->
+      <div class="col-md-12">
+        <button (click)="updatePhoneNumber()" class="btn btn-primary w-100">Update Phone Number</button>
+      </div>
+    </div>
+  </div>
+  
+  
+  

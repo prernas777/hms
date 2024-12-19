@@ -1,0 +1,64 @@
+<h2>Login Page</h2>
+
+<div class="container col-lg-4">
+  <form #formData="ngForm" (ngSubmit)="readFormData(formData)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">UserName</label>
+      <input type="username" class="form-control" name="username" required #username="ngModel" ngModel>
+      <small id="userHelp" class="form-text text-muted">We'll never share your user details with anyone else.</small><br>
+      <span style="color:red" *ngIf="username.touched && username.invalid">UserName is required</span>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" name="password" required #pwd="ngModel" ngModel>
+      <span style="color:red" *ngIf="pwd.touched && pwd.invalid">Password is mandatory</span>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Submit</button>
+  </form>
+</div>
+<h3 class="text-center">Update Room Capacity</h3>
+
+<div class="container col-md-6 mt-4">
+  <!-- Form for Updating Room Capacity -->
+  <form #updateForm="ngForm" (ngSubmit)="updateRoomCapacity(newCapacity.value, roomId.value)">
+    <div class="form-group mb-3">
+      <label for="roomId">Room ID</label>
+      <input 
+        type="number" 
+        id="roomId" 
+        name="roomId" 
+        #roomId="ngModel" 
+        ngModel 
+        class="form-control" 
+        placeholder="Enter Room ID" 
+        required>
+      <div *ngIf="roomId.invalid && roomId.touched" class="text-danger">
+        Room ID is required.
+      </div>
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="newCapacity">New Capacity</label>
+      <input 
+        type="number" 
+        id="newCapacity" 
+        name="newCapacity" 
+        #newCapacity="ngModel" 
+        ngModel 
+        class="form-control" 
+        placeholder="Enter New Capacity" 
+        min="1" 
+        required>
+      <div *ngIf="newCapacity.invalid && newCapacity.touched" class="text-danger">
+        New Capacity must be greater than 0.
+      </div>
+    </div>
+
+    <button 
+      type="submit" 
+      class="btn btn-primary w-100" 
+      [disabled]="updateForm.invalid">
+      Update Capacity
+    </button>
+  </form>
+</div>

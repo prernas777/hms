@@ -1,0 +1,274 @@
+<!-- <h1>Add User Details</h1>
+
+<form class="container col-md-4" [formGroup]="userForm" (ngSubmit)="addUser()">
+  <div class="form-group">
+    <label for="userId">Enter USERID:</label>
+    <input type="number" id="userId" class="form-control" formControlName="userId" />
+    <div *ngIf="userForm.controls['userId'].invalid && userForm.controls['userId'].touched" class="text-danger">
+      <small *ngIf="userForm.controls['userId'].hasError('required')">User ID is required.</small>
+      <small *ngIf="userForm.controls['userId'].hasError('min')">User ID must be greater than or equal to 1.</small>
+      <small *ngIf="userForm.controls['userId'].hasError('pattern')">User ID must be a valid number.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Enter EMAIL:</label>
+    <input type="email" id="email" class="form-control" formControlName="email" />
+    <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="text-danger">
+      <small *ngIf="userForm.controls['email'].hasError('required')">Email is required.</small>
+      <small *ngIf="userForm.controls['email'].hasError('email')">Please enter a valid email address.</small>
+    </div>
+  </div>
+
+
+  
+
+
+  <div class="form-group">
+    <label for="name">Enter USERNAME:</label>
+    <input type="text" id="name" class="form-control" formControlName="name" />
+    <div *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched" class="text-danger">
+      <small *ngIf="userForm.controls['name'].hasError('required')">Username is required.</small>
+      <small *ngIf="userForm.controls['name'].hasError('minlength')">Username must be at least 3 characters long.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phoneNumber">Enter PHONENUMBER:</label>
+    <input type="number" id="phoneNumber" class="form-control" formControlName="phoneNumber" />
+    <div *ngIf="userForm.controls['phoneNumber'].invalid && userForm.controls['phoneNumber'].touched" class="text-danger">
+      <small *ngIf="userForm.controls['phoneNumber'].hasError('required')">Phone number is required.</small>
+      <small *ngIf="userForm.controls['phoneNumber'].hasError('pattern')">Phone number must be 10 digits.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Enter PASSWORD:</label>
+    <input type="password" id="password" class="form-control" formControlName="password" />
+    <div *ngIf="userForm.controls['password'].invalid && userForm.controls['password'].touched" class="text-danger">
+      <small *ngIf="userForm.controls['password'].hasError('required')">Password is required.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="dateCreated">DATE CREATED:</label>
+    <input type="date" id="dateCreated" class="form-control" formControlName="dateCreated" />
+    <div *ngIf="userForm.controls['dateCreated'].invalid && userForm.controls['dateCreated'].touched" class="text-danger">
+      <small *ngIf="userForm.controls['dateCreated'].hasError('required')">Date Created is required.</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="userRole" class="form-label">Select ROLE:</label>
+    <select id="userRole"  class="form-control" formControlName="userRole" required>
+      <option value="" disabled selected>Select Role</option>
+        <option value="GUEST">GUEST</option>
+        <option value="ADMIN">ADMIN</option>
+        <option value="HOTELOWNER">HOTELOWNER</option>
+    </select>
+    <div *ngIf="userForm.controls['userRole'].invalid && userForm.controls['userRole'].touched" class="text-danger">
+      <small *ngIf="userForm.controls['userRole'].hasError('required')">Role is required.</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="updatedAt">UPDATED AT</label>
+    <input type="date" id="updatedAt" class="form-control" formControlName="updatedAt" />
+    <div *ngIf="userForm.controls['updatedAt'].invalid && userForm.controls['updatedAt'].touched" class="text-danger">
+      <small *ngIf="userForm.controls['updatedAt'].hasError('required')">Date Created is required.</small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Add User</button>
+</form> -->
+
+<h1>Add User Details</h1>
+
+<form class="container col-md-4" #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
+  <!-- User ID -->
+  <div class="form-group">
+    <label for="userId">Enter USERID:</label>
+    <input
+      type="number"
+      id="userId"
+      class="form-control"
+      name="userId"
+      ngModel
+      required
+      min="1"
+    />
+    <div *ngIf="userForm.controls['userId']?.invalid && userForm.controls['userId']?.touched" class="text-danger">
+      <small *ngIf="userForm.controls['userId']?.hasError('required')">User ID is required.</small>
+      <small *ngIf="userForm.controls['userId']?.hasError('min')">User ID must be greater than or equal to 1.</small>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <label for="email">Enter EMAIL:</label>
+    <input
+      type="email"
+      id="email"
+      class="form-control"
+      name="email"
+      ngModel
+      required
+    />
+    <div *ngIf="userForm.controls['email']?.invalid && userForm.controls['email']?.touched" class="text-danger">
+      <small *ngIf="userForm.controls['email']?.hasError('required')">Email is required.</small>
+      <small *ngIf="userForm.controls['email']?.hasError('email')">Please enter a valid email address.</small>
+    </div>
+  </div>
+
+  <!-- Username -->
+  <div class="form-group">
+    <label for="name">Enter USERNAME:</label>
+    <input
+      type="text"
+      id="name"
+      class="form-control"
+      name="name"
+      ngModel
+      required
+      minlength="3"
+    />
+    <div *ngIf="userForm.controls['name']?.invalid && userForm.controls['name']?.touched" class="text-danger">
+      <small *ngIf="userForm.controls['name']?.hasError('required')">Username is required.</small>
+      <small *ngIf="userForm.controls['name']?.hasError('minlength')">Username must be at least 3 characters long.</small>
+    </div>
+  </div>
+
+  <!-- Phone Number -->
+  <div class="form-group">
+    <label for="phoneNumber">Enter PHONENUMBER:</label>
+    <input
+      type="number"
+      id="phoneNumber"
+      class="form-control"
+      name="phoneNumber"
+      ngModel
+      required
+      pattern="^[0-9]{10}$"
+    />
+    <div *ngIf="userForm.controls['phoneNumber']?.invalid && userForm.controls['phoneNumber']?.touched" class="text-danger">
+      <small *ngIf="userForm.controls['phoneNumber']?.hasError('required')">Phone number is required.</small>
+      <small *ngIf="userForm.controls['phoneNumber']?.hasError('pattern')">Phone number must be 10 digits.</small>
+    </div>
+  </div>
+
+  <!-- Password -->
+  <div class="form-group">
+    <label for="password">Enter PASSWORD:</label>
+    <input
+      type="password"
+      id="password"
+      class="form-control"
+      name="password"
+      ngModel
+      required
+      minlength="5"
+    />
+    <div *ngIf="userForm.controls['password']?.invalid && userForm.controls['password']?.touched" class="text-danger">
+      <small *ngIf="userForm.controls['password']?.hasError('required')">Password is required.</small>
+      <small *ngIf="userForm.controls['password']?.hasError('minlength')">Password must be at least 5 characters long.</small>
+    </div>
+  </div>
+
+  <!-- Date Created -->
+  <div class="form-group">
+    <label for="dateCreated">DATE CREATED:</label>
+    <input
+      type="date"
+      id="dateCreated"
+      class="form-control"
+      name="dateCreated"
+      ngModel
+      required
+    />
+    <div *ngIf="userForm.controls['dateCreated']?.invalid && userForm.controls['dateCreated']?.touched" class="text-danger">
+      <small *ngIf="userForm.controls['dateCreated']?.hasError('required')">Date Created is required.</small>
+    </div>
+  </div>
+
+  <!-- User Role -->
+  <!-- <div class="form-group">
+    <label for="userRole">Select ROLE:</label>
+    <select
+      id="userRole"
+      class="form-control"
+      name="userRole"
+      ngModel
+      required
+    >
+      <option value="" disabled selected>Select Role</option>
+      <option value="GUEST">GUEST</option>
+      <option value="ADMIN">ADMIN</option>
+      <option value="HOTELOWNER">HOTELOWNER</option>
+    </select>
+    <div *ngIf="userForm.controls['userRole']?.invalid && userForm.controls['userRole']?.touched" class="text-danger">
+      <small *ngIf="userForm.controls['userRole']?.hasError('required')">Role is required.</small>
+    </div>
+  </div> -->
+  <!-- <div class="form-group">
+    <label for="userRole">Select ROOM TYPE:</label>
+    <select
+        id="userRole"
+        class="form-control"
+        name="userRole"
+        ngModel
+        #roomType="ngModel"
+        required
+    >
+        <option [value]="null" disabled selected>Select Rolee</option>
+        <option *ngFor="let role of userRole" [value]="role">{{ role }}</option>
+    </select>
+   
+</div> -->
+<div class="form-group">
+  <label for="userRole">User Role</label>
+  <select
+    id="userRole"
+    class="form-control"
+    name="userRole"
+    required
+    [(ngModel)]="formData.userRole"
+    #userRole="ngModel"
+  >
+    <option value="" disabled selected>Select a role</option>
+    <option value="ADMIN">Admin</option>
+    <option value="GUEST">Guest</option>
+    <option value="HOTELOWNER">HotelOwner</option>
+  </select>
+  <span style="color: red" *ngIf="userRole.touched && userRole.invalid">
+    User Role is required
+  </span>
+</div>
+
+
+  <!-- Updated At -->
+  <div class="form-group">
+    <label for="updatedAt">UPDATED AT:</label>
+    <input
+      type="date"
+      id="updatedAt"
+      class="form-control"
+      name="updatedAt"
+      ngModel
+      required
+    />
+    <div *ngIf="userForm.controls['updatedAt']?.invalid && userForm.controls['updatedAt']?.touched" class="text-danger">
+      <small *ngIf="userForm.controls['updatedAt']?.hasError('required')">Updated At is required.</small>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [disabled]="userForm.invalid"
+  >
+    Add User
+  </button>
+  
+</form>
+
+

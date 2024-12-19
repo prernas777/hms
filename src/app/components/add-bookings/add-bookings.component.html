@@ -1,0 +1,108 @@
+<h1>Add Booking Details</h1>
+
+<form class="container col-md-4" #formData="ngForm" (ngSubmit)="addBooking(formData.value)">
+    <!-- Booking ID -->
+    <div class="form-group">
+        <label for="bookingId">Enter BOOKING ID:</label>
+        <input type="number" id="bookingId" class="form-control" name="bookingId" ngModel #bookingId="ngModel" required
+            minlength="1" maxlength="3" />
+        <div *ngIf="bookingId.invalid && bookingId.touched" class="text-danger">
+            Booking ID is required and must be greater than 0.
+        </div>
+    </div>
+
+    <!-- Check In Date -->
+    <div class="form-group">
+        <label for="checkInDate">Checkin Date</label>
+        <input type="date" id="checkInDate" class="form-control" name="checkInDate" ngModel #checkInDate="ngModel"
+            required />
+    </div>
+
+    <!-- Check Out Date -->
+    <div class="form-group">
+        <label for="checkOutDate">Checkin Date</label>
+        <input type="date" id="checkOutDate" class="form-control" name="checkOutDate" ngModel #checkOutDate="ngModel"
+            required />
+    </div>
+
+    <!-- Total Amount -->
+    <div class="form-group">
+        <label for="totalAmount">Enter Total Amount:</label>
+        <input type="text" id="totalAmount" class="form-control" name="totalAmount" ngModel #totalAmount="ngModel"
+            required />
+        <div *ngIf="totalAmount.invalid && totalAmount.touched" class="text-danger">
+            Total Amount is required.
+        </div>
+    </div>
+
+    <!-- Booking status -->
+    <div class="form-group">
+        <label for="bookingStatus">Select Booking status:</label>
+        <select id="bookingStatus" class="form-control" name="totalAmount" ngModel #bookingStatus="ngModel" required>
+            <option value="confirmed">Confirmed</option>
+            <option value="pending">Pending</option>
+            <option value="cancelled">Cancelled</option>
+        </select>
+    </div>
+
+    <!-- Booking Date -->
+    <div class="form-group">
+        <label for="bookingDate">Booking Date</label>
+        <input type="date" id="bookingDate" class="form-control" name="bookingDate" ngModel #bookingDate="ngModel"
+            required />
+    </div>
+
+    <!-- No of guests -->
+    <div class="form-group">
+        <label for="bookingId">Enter no of guests:</label>
+        <input type="number" id="numberOfGuests" class="form-control" name="numberOfGuests" ngModel
+            #numberOfGuests="ngModel" required min="1" max="3" maxlength="1" />
+        <div *ngIf="numberOfGuests.invalid && numberOfGuests.touched" class="text-danger">
+            No of guests is required and must be greater than 0.
+        </div>
+    </div>
+
+    <!-- Special requests -->
+    <div class="form-group">
+        <label for="city">Enter any special requests:</label>
+        <input type="text" id="specialRequests" class="form-control" name="specialRequests" ngModel
+            #specialRequests="ngModel" required />
+        <div *ngIf="specialRequests.invalid && specialRequests.touched" class="text-danger">
+            Special Requests is required.
+        </div>
+    </div>
+
+    <!-- User ID -->
+    <div class="form-group">
+        <label for="userId">Enter User ID:</label>
+        <input type="number" id="userId" class="form-control" name="userId" ngModel #userId="ngModel" required
+            maxlength="3" />
+        <div *ngIf="userId.invalid && userId.touched" class="text-danger">
+            User ID is required and must be greater than 0.
+        </div>
+    </div>
+
+    <!-- Hotel ID -->
+    <div class="form-group">
+        <label for="hotelId">Enter Hotel ID:</label>
+        <input type="number" id="hotelId" class="form-control" name="hotelId" ngModel #hotelId="ngModel" required
+            maxlength="3" />
+        <div *ngIf="hotelId.invalid && hotelId.touched" class="text-danger">
+            Hotel ID is required and must be greater than 0.
+        </div>
+    </div>
+
+    <!-- Room ID -->
+    <div class="form-group">
+        <label for="roomId">Enter Room ID:</label>
+        <input type="number" id="roomId" class="form-control" name="roomId" ngModel #roomId="ngModel" required
+            maxlength="3" />
+        <div *ngIf="roomId.invalid && roomId.touched" class="text-danger">
+            Room ID is required and must be greater than 0.
+        </div>
+    </div>
+
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Add Booking</button>
+</form>

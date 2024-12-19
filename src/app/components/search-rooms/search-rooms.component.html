@@ -1,0 +1,38 @@
+<p>display-rooms works!</p>
+
+<!-- Display rooms if there are any in roomList -->
+<div *ngIf="roomSearchList.length > 0" class="container col-md-8 d-flex justify-content-center">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ROOMID</th>
+                <th>ROOMNUMBER</th>
+                <th>ROOMTYPE</th>
+                <th>PRICEPERNIGHT</th>
+                <th>AVAILABILITY STATUS</th>
+                <th>CAPACITY</th>
+                <th>DESCRIPTION</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through roomList and display each room in a row -->
+            <tr *ngFor="let room of roomSearchList">
+                <td>{{ room.roomId }}</td>
+                <td>{{ room.roomNumber }}</td>
+                <td>{{ room.roomType }}</td>
+                <td>{{ room.pricePerNight }}</td>
+                <td>{{ room.availabilityStatus }}</td>
+                <td>{{ room.capacity }}</td>
+                <td>{{ room.description }}</td>
+               
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Display message when no rooms are found -->
+<div *ngIf="roomSearchList.length === 0">
+  <p>No rooms found for "{{ searchInput }}"</p>
+</div>
+

@@ -1,0 +1,40 @@
+<p>security works!</p>
+
+<h2>Login Page</h2>
+
+<div class="container col-lg-4">
+  <form #formData="ngForm" (ngSubmit)="readFormData(formData)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">UserName</label>
+      <input type="username" class="form-control" name="username" required #username="ngModel" ngModel>
+      <small id="userHelp" class="form-text text-muted">We'll never share your user details with anyone else.</small><br>
+      <span style="color:red" *ngIf="username.touched && username.invalid">UserName is required</span>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" name="password" required #pwd="ngModel" ngModel>
+      <span style="color:red" *ngIf="pwd.touched && pwd.invalid">Password is mandatory</span>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Submit</button>
+  </form>
+</div>
+
+<p>Display of Users!</p>
+
+<div class="container col-md-8 d-flex justify-content-center">
+  <table class="table table-dark">
+    <tr>
+      <th>USERID</th><th>EMAIL</th><th>NAME</th><th>PHONENUMBER</th><th>PASSWORD</th><th>DATECREATED</th><th>USERROLE</th><th>Delete</th>
+    </tr>
+    <tr *ngFor="let user of userList">
+      <td>{{user.userId}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.phoneNumber}}</td>
+      <td>{{user.password}}</td>
+      <td>{{user.dateCreated}}</td>
+      <td>{{user.userRole}}</td>
+      <td><button type="button" class="btn btn-danger" (click)="deleteById(user.userId)">Delete</button></td>
+    </tr>
+  </table>
+</div>
